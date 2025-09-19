@@ -19,12 +19,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.luizf3lipe.financepay.R
 import com.luizf3lipe.financepay.components.inputs.InputIconPosition
 import com.luizf3lipe.financepay.components.inputs.InputText
 import com.luizf3lipe.financepay.components.primaryButton.PrimaryButton
+import com.luizf3lipe.financepay.screens.navigation.Screens
 import com.luizf3lipe.financepay.ui.theme.Gray100
 import com.luizf3lipe.financepay.ui.theme.Gray300
 import com.luizf3lipe.financepay.ui.theme.Gray500
@@ -33,7 +34,7 @@ import com.luizf3lipe.financepay.ui.theme.TextSmall
 import com.luizf3lipe.financepay.ui.theme.TitleSmall
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .background(color = Gray100)
@@ -41,7 +42,7 @@ fun LoginScreen() {
             .windowInsetsPadding(WindowInsets.systemBars)
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(12.dp),
+            modifier = Modifier.fillMaxSize().padding(top = 8.dp, bottom = 8.dp, start = 12.dp, end = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -55,7 +56,7 @@ fun LoginScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .padding(top = 40.dp, bottom = 48.dp, start = 32.dp, end = 32.dp),
+                    .padding(top = 40.dp, start = 32.dp, end = 32.dp),
             ) {
                 Text(
                     text = "BOAS VINDAS!",
@@ -88,15 +89,13 @@ fun LoginScreen() {
                 )
                 PrimaryButton(
                     title = "Entrar",
-                    onClick = {}
+                    onClick = {
+                        navController.navigate(Screens.HomeRoot.route) {
+                            popUpTo(Screens.Login.route) { inclusive = true }
+                        }
+                    }
                 )
             }
         }
     }
-}
-
-@Preview
-@Composable
-private fun LoginScreenPrev() {
-    LoginScreen()
 }
