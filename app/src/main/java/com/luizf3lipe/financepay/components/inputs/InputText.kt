@@ -33,7 +33,7 @@ fun InputText(
     @DrawableRes iconRes: Int? = null,
     iconPosition: InputIconPosition? = null
 ) {
-    var text by remember { mutableStateOf<String>("") }
+    var text by remember { mutableStateOf("") }
 
     val leadingIcon: (@Composable (() -> Unit))? =
         if (iconRes != null && iconPosition == InputIconPosition.START) {
