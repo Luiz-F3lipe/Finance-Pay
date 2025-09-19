@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.luizf3lipe.financepay.screens.login.LoginScreen
 import com.luizf3lipe.financepay.screens.splash.SplashScreen
 
 @Composable
@@ -17,6 +18,10 @@ fun AppNavHost(modifier: Modifier = Modifier) {
         // Splash Screen
         composable(Screens.Splash.route) {
             SplashScreen(navController)
+        }
+        // Login Screen
+        composable(Screens.Login.route) {
+            LoginScreen()
         }
     }
 }

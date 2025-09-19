@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luizf3lipe.financepay.R
 import com.luizf3lipe.financepay.ui.theme.Gray200
+import com.luizf3lipe.financepay.ui.theme.Gray300
 import com.luizf3lipe.financepay.ui.theme.Gray400
 import com.luizf3lipe.financepay.ui.theme.Gray700
 import com.luizf3lipe.financepay.ui.theme.Input
@@ -62,7 +63,7 @@ fun InputText(
             cursorColor = Primary,
             focusedTextColor = Gray700,
             focusedBorderColor = Primary,
-            unfocusedBorderColor = Gray400,
+            unfocusedBorderColor = Gray300,
             focusedContainerColor = Gray200,
             unfocusedContainerColor = Gray200,
         ),
