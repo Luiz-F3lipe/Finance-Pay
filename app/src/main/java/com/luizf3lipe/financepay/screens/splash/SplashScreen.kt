@@ -1,6 +1,5 @@
-package com.luizf3lipe.financepay.ui.theme.screens.splash
+package com.luizf3lipe.financepay.screens.splash
 
-import android.window.SplashScreen
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -12,14 +11,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,9 +28,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.luizf3lipe.financepay.R
 import com.luizf3lipe.financepay.ui.theme.GradientBlack
-import com.luizf3lipe.financepay.ui.theme.Primary
-import com.luizf3lipe.financepay.ui.theme.TitleLarge
-import com.luizf3lipe.financepay.ui.theme.screens.navigation.Screens
+import com.luizf3lipe.financepay.screens.navigation.Screens
 import kotlinx.coroutines.delay
 
 @Composable

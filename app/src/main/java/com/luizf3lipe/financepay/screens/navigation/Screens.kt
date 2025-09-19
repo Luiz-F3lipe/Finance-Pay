@@ -1,4 +1,4 @@
-package com.luizf3lipe.financepay.ui.theme.screens.navigation
+package com.luizf3lipe.financepay.screens.navigation
 
 sealed class Screens(val route: String) {
     object Splash : Screens("splash")
