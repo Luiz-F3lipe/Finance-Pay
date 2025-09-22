@@ -31,12 +31,7 @@ import com.luizf3lipe.financepay.ui.theme.Primary
 import com.luizf3lipe.financepay.R
 
 // Data class para os itens do bottom nav
-data class BottomNavItem(
-    val route: String,
-    val title: String,
-    val selectedIcon: Int,
-    val unselectedIcon: Int
-)
+
 
 @Composable
 fun AppNavHost(navController: NavHostController = rememberNavController()) {
