@@ -4,12 +4,11 @@ import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
-import com.luizf3lipe.financepay.components.incomeList.IncomeListBackground
-import com.luizf3lipe.financepay.components.incomeList.IncomeListItem
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun IncomeDebtorsList(
-    onEdit: () -> Void,
+    onEdit: () -> Unit,
 ) {
     val dismissState = rememberSwipeToDismissBoxState(
         confirmValueChange = {
@@ -22,9 +21,15 @@ fun IncomeDebtorsList(
 
     SwipeToDismissBox(
         state = dismissState,
-        content = {  },
-        backgroundContent = {  },
+        content = { IncomeDebtorsListItem() },
+        backgroundContent = { IncomeDebtorsListBackground() },
         enableDismissFromEndToStart = true,
         enableDismissFromStartToEnd = false
     )
+}
+
+@Preview
+@Composable
+private fun IncomeDebtorsListPrev() {
+    IncomeDebtorsList(onEdit = { })
 }
