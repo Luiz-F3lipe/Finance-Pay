@@ -90,7 +90,7 @@ fun LoginScreen(navController: NavController) {
                 PrimaryButton(
                     title = "Entrar",
                     onClick = {
-                        navController.navigate(Screens.HomeRoot.route) {
+                        navController.navigate(Screens.Home.route) {
                             popUpTo(Screens.Login.route) { inclusive = true }
                         }
                     },
