@@ -60,7 +60,6 @@ fun MonthSelector(
     onMonthSelected: (Month, Int) -> Unit = { _, _ -> },
     modifier: Modifier = Modifier,
     showNavigationArrows: Boolean = true,
-    monthsToShow: Int = 12, // quantos meses mostrar (passado + futuro)
     locale: Locale = Locale("pt", "BR")
 ) {
     val currentDate = LocalDate.now()
@@ -68,8 +67,8 @@ fun MonthSelector(
     var currentSelectedYear by remember { mutableIntStateOf(selectedYear) }
 
     // Gerar lista de meses baseada na data atual
-    val months = remember(currentDate, monthsToShow) {
-        generateMonthsList(currentDate, monthsToShow, locale)
+    val months = remember(currentDate,) {
+        generateMonthsList(currentDate.year, locale)
     }
 
     val listState = rememberLazyListState()
@@ -234,28 +233,16 @@ private fun NavigationArrow(
 // Função helper para gerar lista de meses
 @RequiresApi(Build.VERSION_CODES.O)
 private fun generateMonthsList(
-    currentDate: LocalDate,
-    monthsToShow: Int,
+    year: Int,
     locale: Locale
 ): List<MonthData> {
-    val months = mutableListOf<MonthData>()
-    val startDate = currentDate.minusMonths((monthsToShow / 2).toLong())
-
-    repeat(monthsToShow) { index ->
-        val date = startDate.plusMonths(index.toLong())
-        months.add(
-            MonthData(
-                month = date.month,
-                year = date.year,
-                displayName = date.month.getDisplayName(
-                    TextStyle.SHORT,
-                    locale
-                ).take(3) // Garantir máximo 3 caracteres
-            )
+    return Month.values().map { month ->
+        MonthData(
+            month = month,
+            year = year,
+            displayName = month.getDisplayName(TextStyle.SHORT, locale).take(3)
         )
     }
-
-    return months
 }
 
 // Versão compacta sem setas de navegação
@@ -273,7 +260,6 @@ fun CompactMonthSelector(
         onMonthSelected = onMonthSelected,
         modifier = modifier,
         showNavigationArrows = false,
-        monthsToShow = 8
     )
 }
 

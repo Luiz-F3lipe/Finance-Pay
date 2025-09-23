@@ -93,7 +93,8 @@ fun LoginScreen(navController: NavController) {
                         navController.navigate(Screens.HomeRoot.route) {
                             popUpTo(Screens.Login.route) { inclusive = true }
                         }
-                    }
+                    },
+                    modifier = Modifier
                 )
             }
         }

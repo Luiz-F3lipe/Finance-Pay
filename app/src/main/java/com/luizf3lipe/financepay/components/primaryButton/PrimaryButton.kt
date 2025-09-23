@@ -17,11 +17,12 @@ import com.luizf3lipe.financepay.ui.theme.Primary
 @Composable
 fun PrimaryButton(
     title: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier
 ) {
     Button(
         onClick = onClick,
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(48.dp),
         colors = ButtonDefaults.buttonColors(
@@ -36,10 +37,4 @@ fun PrimaryButton(
             color = Gray100
         )
     }
-}
-
-@Preview
-@Composable
-private fun PrimaryButtonPrev() {
-    PrimaryButton(title = "Entrar", onClick = {})
 }
