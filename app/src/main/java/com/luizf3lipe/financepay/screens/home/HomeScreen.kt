@@ -2,8 +2,8 @@ package com.luizf3lipe.financepay.screens.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,26 +13,38 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.luizf3lipe.financepay.R
 import com.luizf3lipe.financepay.components.debtorCard.DebtorCard
 import com.luizf3lipe.financepay.components.header.Header
+import com.luizf3lipe.financepay.components.incomeList.IncomeList
 import com.luizf3lipe.financepay.components.monthSelector.MonthSelector
 import com.luizf3lipe.financepay.components.primaryButton.PrimaryButton
+import com.luizf3lipe.financepay.ui.theme.Danger
 import com.luizf3lipe.financepay.ui.theme.Gray100
 import com.luizf3lipe.financepay.ui.theme.Gray200
 import com.luizf3lipe.financepay.ui.theme.Gray300
+import com.luizf3lipe.financepay.ui.theme.Gray500
+import com.luizf3lipe.financepay.ui.theme.Gray700
 import com.luizf3lipe.financepay.ui.theme.Primary
+import com.luizf3lipe.financepay.ui.theme.TitleMedium
 import com.luizf3lipe.financepay.ui.theme.TitleSmall
 import java.time.Month
 
@@ -111,6 +123,14 @@ fun HomeScreen() {
                 .fillMaxSize()
                 .padding(16.dp))
         }
+
+        AddFloatingButton(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(24.dp)
+                .size(56.dp),
+            onClick = {}
+        )
     }
 }
 
@@ -126,6 +146,46 @@ fun Incomes(modifier: Modifier) {
             pressedElevation = 8.dp
         )
     ) {
+        Row(
+            modifier = Modifier
+                .padding(vertical = 16.dp, horizontal = 16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = "Lançamentos", style = TitleMedium, color = Gray500)
+            Text(text = "R$ 6.876,89", style = TitleMedium, color = Danger)
+        }
+        HorizontalDivider(color = Gray300)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
+            IncomeList(onRemove = {})
+            IncomeList(onRemove = {})
+            IncomeList(onRemove = {})
+            IncomeList(onRemove = {})
+            IncomeList(onRemove = {})
+            IncomeList(onRemove = {})
+            IncomeList(onRemove = {})
+        }
+    }
+}
+
+@Composable
+fun AddFloatingButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    FloatingActionButton(
+        modifier = modifier.clip(CircleShape),
+        containerColor = Gray700,
+        onClick = onClick
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_add),
+            contentDescription = "Adicionar",
+        )
     }
 }
 

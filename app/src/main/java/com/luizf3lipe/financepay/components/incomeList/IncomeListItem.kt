@@ -15,17 +15,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.SwipeToDismissBox
-import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luizf3lipe.financepay.R
 import com.luizf3lipe.financepay.ui.theme.Danger
@@ -37,15 +34,22 @@ import com.luizf3lipe.financepay.ui.theme.Primary
 import com.luizf3lipe.financepay.ui.theme.TextExtraSmall
 import com.luizf3lipe.financepay.ui.theme.TitleMedium
 import com.luizf3lipe.financepay.ui.theme.TitleSmall
+
 @Composable
 fun IncomeListItem() {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
             .background(color = Gray100)
             .fillMaxWidth()
             .height(67.dp)
-            .border(1.dp, Gray200, RoundedCornerShape(8.dp)),
+            .drawBehind {
+                drawLine(
+                    color = Gray300,
+                    start = Offset(0f, size.height),
+                    end = Offset(size.width, size.height),
+                    strokeWidth = 1.dp.toPx()
+                )
+            }
     ) {
         Row(
             modifier = Modifier
