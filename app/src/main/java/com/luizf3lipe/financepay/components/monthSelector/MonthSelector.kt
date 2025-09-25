@@ -55,19 +55,19 @@ data class MonthData(
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MonthSelector(
+    modifier: Modifier = Modifier,
     selectedMonth: Month = LocalDate.now().month,
     selectedYear: Int = LocalDate.now().year,
     onMonthSelected: (Month, Int) -> Unit = { _, _ -> },
-    modifier: Modifier = Modifier,
     showNavigationArrows: Boolean = true,
-    locale: Locale = Locale("pt", "BR")
+    locale: Locale = Locale.forLanguageTag("pt-BR")
 ) {
     val currentDate = LocalDate.now()
     var currentSelectedMonth by remember { mutableStateOf(selectedMonth) }
     var currentSelectedYear by remember { mutableIntStateOf(selectedYear) }
 
     // Gerar lista de meses baseada na data atual
-    val months = remember(currentDate,) {
+    val months = remember(currentDate) {
         generateMonthsList(currentDate.year, locale)
     }
 
@@ -236,7 +236,7 @@ private fun generateMonthsList(
     year: Int,
     locale: Locale
 ): List<MonthData> {
-    return Month.values().map { month ->
+    return Month.entries.map { month ->
         MonthData(
             month = month,
             year = year,
@@ -249,10 +249,10 @@ private fun generateMonthsList(
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CompactMonthSelector(
+    modifier: Modifier = Modifier,
     selectedMonth: Month = LocalDate.now().month,
     selectedYear: Int = LocalDate.now().year,
     onMonthSelected: (Month, Int) -> Unit = { _, _ -> },
-    modifier: Modifier = Modifier
 ) {
     MonthSelector(
         selectedMonth = selectedMonth,

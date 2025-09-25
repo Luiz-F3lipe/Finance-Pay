@@ -3,7 +3,6 @@ package com.luizf3lipe.financepay.screens.navigation
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController

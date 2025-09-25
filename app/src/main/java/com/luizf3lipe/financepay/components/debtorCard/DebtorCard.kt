@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -97,7 +98,67 @@ fun DebtorCard(
     }
 }
 
-
+@Composable
+fun DebtorCardFullWidth() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Gray200
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 4.dp,
+            pressedElevation = 8.dp
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                contentAlignment = Alignment.Center
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .background(
+                            color = Gray300,
+                            shape = CircleShape
+                        )
+                        .border(
+                            width = 2.dp,
+                            color = Gray400.copy(alpha = 0.3f),
+                            shape = CircleShape
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ic_user_square),
+                        contentDescription = "Avatar de luiz Felipe",
+                        colorFilter = ColorFilter.tint(Gray500),
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(
+                text = "Luiz Felipe Moraes Lima",
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp
+                ),
+                color = Gray500,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
@@ -109,5 +170,6 @@ private fun DebtorCardPreview() {
 
         // Card sem valor
         DebtorCard()
+        DebtorCardFullWidth()
     }
 }
